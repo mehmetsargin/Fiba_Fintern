@@ -1,0 +1,12 @@
+{
+  "name": "Fiba_Fintern",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Fiba_Backend_Challenge.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mehmet",
+  "license": "ISC",
+  "dependencies": {}
+}
