@@ -13,16 +13,7 @@ const { response } = require('express');
 const { result } = require('underscore');
 
 
-
-app.get('/listele', function (req, res) {
-    fs.readFile('Fiba.json', 'utf8', function (err, data) {
-        res.setHeader('Content-Type', 'application/json');
-        console.log(data);
-        res.end(data);
-    });
-});
-
-app.post('/ekle', function (req, res) {
+app.post('/add', function (req, res) {
 
     fs.readFile('Fiba.json', 'utf8', function (err, data) {
         data = JSON.parse(data);
@@ -69,7 +60,7 @@ app.delete('/delete', function (req, res, next) {
 });
 
 
-app.put('/put', function (req, res) {
+app.put('/update', function (req, res) {
     fs.readFile('Fiba.json', 'utf8', function (err, data) {
         data = JSON.parse(data);
 
@@ -84,30 +75,7 @@ app.put('/put', function (req, res) {
 });
 
 
-app.get('/sorgula', function (req, res) {
-    fs.readFile('Fiba.json', 'utf8', function (err, data) {
-        data = JSON.parse(data);
-        var id = "user" + req.query.id;
-        var isUserExist = data[id];
-        if (isUserExist) {
-
-            console.log(data[id]);
-            res.end(JSON.stringify(data[id]));
-
-        }
-
-        else {
-
-            res.setHeader('Content-Type', 'application/json');
-            res.status(500);
-            res.send(JSON.stringify("Girilen Kullanıcı Bulunamadı"));
-            console.log("Girilen Kullanıcı Bulunamadı");
-
-        }
-    });
-});
-
-app.get('/sorgula/date', function (req, res) {
+app.get('/list', function (req, res) {
 
     if (req.query.createdDate == "") {
         res.setHeader('Content-Type', 'application/json');
@@ -121,7 +89,6 @@ app.get('/sorgula/date', function (req, res) {
 
         var data = JSON.parse(data);
         const length = Object.keys(data).length; //json dosyasının eleman sayısı
-        //console.log(length);
         var tarih = req.query.createdDate; //postmanden gelen tarih
         var array = [];
         var i;
@@ -154,13 +121,7 @@ app.get('/sorgula/date', function (req, res) {
             res.end(JSON.stringify("Girilen tarihten daha yeni kullanıcı bulunamadı."));
         }
 
-
-
-
         array = [];
-
-
-
 
     });
 });
