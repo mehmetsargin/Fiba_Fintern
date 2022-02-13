@@ -8,5 +8,7 @@
   },
   "author": "Mehmet",
   "license": "ISC",
-  "dependencies": {}
+  "dependencies": {
+    "date-and-time": "^2.1.1"
+  }
 }
