@@ -89,28 +89,33 @@ app.get('/list', function (req, res) {
 
         var data = JSON.parse(data);
         const length = Object.keys(data).length; //json dosyasının eleman sayısı
+        var users = Object.keys(data);
         var tarih = req.query.createdDate; //postmanden gelen tarih
         var array = [];
         var i;
         console.log("Girilen tarihten daha yeni kullanıcılar: ");
-        for (i = 1; i <= length; i++) {
+        users.forEach(user => {
 
-            var id = "user" + i;
-            var isUserExist = data[id];
+            var isUserExist = data[user];
             var dates = isUserExist[0];
             //console.log(dates);
             var str = JSON.stringify(dates);
             var tarihim = str.slice(16, 26);
 
             if (tarih < tarihim) {
-                var arraytutan = JSON.stringify(data[id]);
+                var arraytutan = JSON.stringify(data[user]);
                 array.push(arraytutan);
                 //console.log(tarihim);
-                console.log(data[id]);
+                console.log(data[user]);
                 //console.log(array + "array verisi");
 
             }
-        }
+
+        });
+
+
+
+
 
 
         if (array != "") {
